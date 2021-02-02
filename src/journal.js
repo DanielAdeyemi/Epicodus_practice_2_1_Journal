@@ -9,9 +9,16 @@ Entry.prototype.numOfWords = function() {
   bodyCount = bodyCount.split(" ").length;
   return titleCount + bodyCount;
 };
-export function vowels() {
-
-}
-export function getTeaser() {
-
-}
+Entry.prototype.vowels = function() {
+    //let vowelCount = (this.title)./[aeiou]/
+    let sent = `${this.title} ${this.body}`;
+    let vowelCount = 0;
+    let constCount = 0;
+    Array.from(sent).forEach(function(tit) {
+      if (/[aeiou]/gi.test(tit)) vowelCount++;
+      else if (/[^aeiou]/gi.test(tit) && /[a-z]/gi.test(tit)) constCount++;
+    })
+    let s = `Vowels: ${vowelCount} and const ${constCount}`;
+    return s;
+  }
+  // Entry.prototype.getTeaser {}

@@ -4,10 +4,14 @@ export function Entry(title, body) {
 }
 
 Entry.prototype.numOfWords = function() {
-  let titleCount = (this.title).replace(/[ ]{2,}/g, " ");
-  let bodyCount = (this.body).replace(/[ ]{2,}/g, " ");
+  let titleCount = (this.title).replace(/(^\s*)|(\s*$)/gi, "");
+  let bodyCount = (this.body).replace(/(^\s*)|(\s*$)/gi, "");
+  titleCount = (this.title).replace(/[ ]{2,}/g, " ");
+  bodyCount = (this.body).replace(/[ ]{2,}/g, " ");
   titleCount = titleCount.split(" ").length;
   bodyCount = bodyCount.split(" ").length;
+  titleCount = (!(this.title)) ? 0 : titleCount;
+  bodyCount = (!(this.body)) ? 0 : bodyCount;
   return titleCount + bodyCount;
 };
 

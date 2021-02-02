@@ -19,13 +19,13 @@ Entry.prototype.vowels = function() {
     if (/[aeiou]/gi.test(tit)) vowelCount++;
     else if (/[^aeiou]/gi.test(tit) && /[a-z]/gi.test(tit)) constCount++;
   });
-  let s = `Vowels: ${vowelCount} and const ${constCount}`;
+  let s = `Vowels: ${vowelCount} and consonants ${constCount}`;
   return s;
 };
 
 Entry.prototype.getTeaser = function() {
-  let firstSentence = this.body.split(".");
-
+  let firstSentence = (this.body.split(/[.!?]/)[0]).split(" ").length;
+  let out = (firstSentence < 8) ? (this.body.split(/[.!?]/)[0]) : (this.body.split(/[.!?]/)[0].split(" ").slice(0, 8).join(" "));
 
   return out;
 }

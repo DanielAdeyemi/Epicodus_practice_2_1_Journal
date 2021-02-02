@@ -11,5 +11,7 @@ $("form").submit(function(event) {
   const body = $("#journalBody").val();
   let entry = new Entry(title, body);
   let words = entry.numOfWords();
-  console.log(words);
+  let num = entry.vowels();
+  let teaser = entry.getTeaser();
+  console.log(teaser);
 });
